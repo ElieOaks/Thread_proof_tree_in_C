@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <stdbool.h>
+
+///////////////----- Structures ----------/////////////////////
+typedef struct node node_t;
+typedef struct tree tree_t;
+
+struct node {
+  int key;
+  void *elem;
+
+  bool red;
+};
+
+struct tree {
+  node_t *root;
+  int size;
+};
+///////////////------ Content ------------/////////////////////
+
+tree_t *new_tree();
+void  *find_elem();
+bool add_elem();
+bool remove_elem();
+bool balance_tree();
+
+//////////////------ Code ----------------/////////////////////
+
+/**
+ * Creating a new tree does not have to have any concurrent safe guards, it is access to this tree that does.
+ */
+tree_t *new_tree() {
+  tree_t *new = calloc(1, sizeof(tree_t));
+
+  new->root = NULL;
+  new->size = 0;
+
+  return new;
+}
+
+/**
+ * need to prevent race conditions here
+ */
+bool add_elem(tree_t *tree, void *element) {
+  return true;
+}
